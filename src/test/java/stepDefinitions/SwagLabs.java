@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -56,11 +57,12 @@ public class SwagLabs {
     @Then("connexion sur le site web Swag Labs avec succès")
     public void connexionSurLeSiteWebSwagLabsAvecSuccès() {
         String url = driver.getCurrentUrl();
-        if (url.equals("https://www.saucedemo.com/inventory.html")) {
+        Assert.assertEquals("connexion sur le site web Swag Labs avec succès", url, "https://www.saucedemo.com/inventory.html");
+        /*if (url.equals("https://www.saucedemo.com/inventoryyyy.html")) {
             System.out.println("connexion sur le site web Swag Labs avec succès");
         } else {
             System.out.println("échec de connexion sur le site web Swag Labs");
-        }
+        }*/
     }
 
     @And("je clique sur add to chart du produit {string}")
@@ -78,11 +80,12 @@ public class SwagLabs {
     public void lesProduitsSontAjoutésAvecSuccès() {
         String cartList = driver.findElement(By.className("cart_list")).getText();
         for (int i = 0; i < names.size(); i++) {
-            if (cartList.contains(names.get(i))) {
+            Assert.assertTrue("le produit: " + names.get(i) + " est ajouté avec succès", cartList.contains(names.get(i)));
+            /*if (cartList.contains(names.get(i))) {
                 System.out.println("le produit: " + names.get(i) + " est ajouté avec succès");
             } else {
                 System.out.println("échec d'ajout le produit: " + names.get(i));
-            }
+            }*/
         }
     }
 
@@ -119,11 +122,12 @@ public class SwagLabs {
     @Then("Confirmation et paiement des produits ajoutés avec succès")
     public void confirmationEtPaiementDesProduitsAjoutésAvecSuccès() {
         String msgconfirmation = driver.findElement(By.className("complete-text")).getText();
-        if (msgconfirmation.equals("Your order has been dispatched, and will arrive just as fast as the pony can get there!")) {
+        Assert.assertEquals(msgconfirmation, "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
+        /*if (msgconfirmation.equals("Your order has been dispatched, and will arrive just as fast as the pony can get there!")) {
             System.out.println("confirmation et paiement des produits avec succès");
         } else {
             System.out.println("échec confirmation et paiement des produits ajoutés");
-        }
+        }*/
     }
 
     @And("je clique sur un bouton Burger Menu")
@@ -140,10 +144,11 @@ public class SwagLabs {
     @Then("déconnexion et redirection vers la page login")
     public void déconnexionEtRedirectionVersLaPageLogin() {
         String url = driver.getCurrentUrl();
-        if (url.equals("https://www.saucedemo.com/")) {
+        Assert.assertEquals(url, "https://www.saucedemo.com/");
+        /*if (url.equals("https://www.saucedemo.com/")) {
             System.out.println("déconnexion avec succès et redirection vers la page login");
         } else {
             System.out.println("échec de déconnexion et redirection vers la page login");
-        }
+        }*/
     }
 }

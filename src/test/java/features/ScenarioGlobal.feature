@@ -10,7 +10,7 @@ Feature: Tester les fonctionnalités Login, AddProduct, Checkout, Logout sur le 
     And je clique sur add to chart du produit "Sauce Labs Bike Light"
     And je clique sur panier
     Then les produits sont ajoutés avec succès
-
+  @Checkout
   Scenario: Tester la confirmation et le paiement des produits ajoutés aprés la connexion
     And je clique sur un bouton Checkout
     And je saisie FirstName "Chaker"
@@ -19,9 +19,9 @@ Feature: Tester les fonctionnalités Login, AddProduct, Checkout, Logout sur le 
     And je clique Continue
     And je clique Finish
     Then Confirmation et paiement des produits ajoutés avec succès
-
+  @Logout
+  @Test
   Scenario: Tester Logout sur le site web Swag Labs
     And je clique sur un bouton Burger Menu
     And je clique sur un bouton Logout
     Then déconnexion et redirection vers la page login
-
